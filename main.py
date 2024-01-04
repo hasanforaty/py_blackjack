@@ -14,6 +14,8 @@ def check_player_wining(player_hand, computer_hand):
     """check to see if player is winner of dealer (computer) is winner"""
     if not check_new_card(player_hand):
         return False
+    if not check_new_card(computer_hand):
+        return True
     player_total = sum(player_hand)
     computer_total = sum(computer_hand)
     if player_total > computer_total:
@@ -38,6 +40,9 @@ def play_blackjack():
             continuing = check_new_card(player_card)
         else:
             continuing = False
+    while sum(dealer_card) < 16 and check_new_card(player_card):
+        dealer_card.append(random.choice(cards))
+
     print("your final hand is: ", player_card)
     print("Computer final hand : ", dealer_card)
     is_player_winning = check_player_wining(player_hand=player_card, computer_hand=dealer_card)
@@ -45,7 +50,7 @@ def play_blackjack():
         print("you won!")
     else:
         print("you lost!")
-    if input("Do you want to play a game of Blackjack? (y/n)") == 'y':
+    if input("Do you want to play a game of Blackjack? (y/n) ") == 'y':
         play_blackjack()
 
 
