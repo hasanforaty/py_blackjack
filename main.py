@@ -3,6 +3,7 @@ import random
 
 
 def check_new_card(player_hand):
+    """check the hand for reaching more than 21 score"""
     total_score = sum(player_hand)
     if total_score > 21:
         return False
@@ -10,6 +11,7 @@ def check_new_card(player_hand):
 
 
 def check_player_wining(player_hand, computer_hand):
+    """check to see if player is winner of dealer (computer) is winner"""
     if not check_new_card(player_hand):
         return False
     player_total = sum(player_hand)
@@ -21,6 +23,7 @@ def check_player_wining(player_hand, computer_hand):
 
 
 def play_blackjack():
+    """start a simple blackjack game ."""
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     dealer_card = [random.choice(cards), random.choice(cards)]
     player_card = [random.choice(cards), random.choice(cards)]
